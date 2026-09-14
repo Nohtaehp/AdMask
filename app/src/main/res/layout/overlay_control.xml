@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_control"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingStart="6dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="6dp"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:id="@+id/tv_target"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:textColor="#DDFFFFFF"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/btn_switch"
+        style="@style/ControlButton"
+        android:text="⇅" />
+
+    <TextView
+        android:id="@+id/btn_up"
+        style="@style/ControlButton"
+        android:text="▲" />
+
+    <TextView
+        android:id="@+id/btn_down"
+        style="@style/ControlButton"
+        android:text="▼" />
+
+    <TextView
+        android:id="@+id/btn_inc"
+        style="@style/ControlButton"
+        android:text="＋" />
+
+    <TextView
+        android:id="@+id/btn_dec"
+        style="@style/ControlButton"
+        android:text="－" />
+
+    <TextView
+        android:id="@+id/btn_done"
+        style="@style/ControlButton"
+        android:text="✓"
+        android:textColor="#7CFC9A"
+        android:textSize="20sp" />
+</LinearLayout>

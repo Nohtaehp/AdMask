@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">广告遮罩</string>
+    <string name="tile_label">广告遮罩</string>
+    <string name="title_pick_apps">选择生效应用</string>
+
+    <string name="channel_name">遮罩运行状态</string>
+    <string name="channel_desc">保持遮罩服务在后台运行</string>
+    <string name="noti_title">广告遮罩运行中</string>
+    <string name="noti_text">点击可打开设置或调整位置</string>
+    <string name="noti_action_edit">调整</string>
+    <string name="noti_action_stop">关闭</string>
+
+    <string name="perm_granted">已授予</string>
+    <string name="perm_missing">未授予，点击去开启</string>
+
+    <string name="card_permission">运行所需权限</string>
+    <string name="acc_service">无障碍服务</string>
+
+    <string name="version_label">版本 %1$s（%2$d）</string>
+    <string name="perm_notify">通知权限</string>
+    <string name="perm_battery">后台运行（电池优化）</string>
+    <string name="btn_grant">去开启</string>
+
+    <string name="card_general">总开关</string>
+    <string name="enable_mask">启用遮罩</string>
+    <string name="btn_adjust">调整位置</string>
+    <string name="btn_stop">停止</string>
+
+    <string name="card_bottom">底部遮罩</string>
+    <string name="card_top">顶部遮罩</string>
+    <string name="label_enable">启用</string>
+    <string name="label_height">高度</string>
+    <string name="label_offset">偏移</string>
+    <string name="label_offset_hint">距屏幕边缘的距离，用于避开系统导航栏</string>
+
+    <string name="card_appearance">外观</string>
+    <string name="label_width">宽度</string>
+    <string name="label_alpha">不透明度</string>
+    <string name="label_color">颜色</string>
+    <string name="label_color_wheel">调色盘</string>
+    <string name="label_hex">HEX</string>
+    <string name="hint_hex">#RRGGBB</string>
+    <string name="label_rgb">RGB</string>
+    <string name="hint_r">R</string>
+    <string name="hint_g">G</string>
+    <string name="hint_b">B</string>
+    <string name="label_rgb_hint">左右拖动取色，也可直接输入 RGB 或 HEX 数值</string>
+
+    <string name="card_scope">生效范围</string>
+    <string name="label_app_filter">仅在选定的应用中显示</string>
+    <string name="btn_pick_apps">选择应用</string>
+    <string name="selected_apps_empty">未选择应用，开启过滤后遮罩将不显示</string>
+    <string name="selected_apps_count">已选 %1$d 个应用</string>
+    <string name="label_boot">开机自动开启</string>
+
+    <string name="summary_on">遮罩运行中：%1$s</string>
+    <string name="summary_off">遮罩已关闭</string>
+    <string name="summary_bottom">底部 %1$ddp</string>
+    <string name="summary_top">顶部 %1$ddp</string>
+
+    <string name="service_running">服务状态：运行中（心跳 %1$d 秒前）</string>
+    <string name="service_dead">服务状态：已停止/被系统回收（最后心跳 %1$d 秒前）</string>
+    <string name="service_never">服务状态：从未启动</string>
+    <string name="service_wait_permission">服务未运行：所需权限已被系统关闭，点此重新开启</string>
+
+    <string name="acc_name">广告遮罩悬浮层</string>
+    <string name="acc_description">用于在屏幕顶部/底部绘制遮挡条，屏蔽应用内的横幅广告。本服务仅监听窗口切换以判断当前应用，不会读取屏幕上的任何内容。</string>
+    <string name="acc_need_enable">需在系统「无障碍」中开启「广告遮罩悬浮层」</string>
+    <string name="btn_open_accessibility">去开启</string>
+
+    <string name="toast_service_restored">已自动恢复遮罩服务</string>
+    <string name="toast_need_reauth">所需权限已被系统关闭，重新授权后遮罩会自动恢复</string>
+
+    <string name="toast_already_granted">权限已授予</string>
+    <string name="toast_battery_hint">请在弹窗中选择「允许」，并在系统设置里允许自启动、锁定后台任务</string>
+    <string name="toast_adjust_hint">屏幕右侧出现调整面板，用 ▲▼ 移动、＋－ 改高度，完成后点 ✓</string>
+
+    <string name="hint_search">搜索应用名称或包名</string>
+    <string name="btn_done">完成</string>
+    <string name="btn_clear">清空</string>
+    <string name="tips">提示：遮罩不接收触摸事件，不会影响正常阅读与翻页。停止遮罩后若仍在显示，稍等 15 秒会自动消失。需要停止时请用本页的「停止」或通知栏的「关闭」，不要使用系统的「强制停止」，否则无障碍服务会被系统一并关闭。</string>
+</resources>
