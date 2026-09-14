@@ -1,0 +1,70 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: 设置 Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: 安装指定 SDK 组件
+        run: |
+          sdkmanager --install "platforms;android-36" "build-tools;36.1.0"
+          yes | sdkmanager --licenses > /dev/null || true
+
+      - name: 初始化 Gradle 缓存
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: 构建 APK
+        run: ./gradlew assembleDebug assembleRelease --no-daemon
+
+      - name: 收集 APK 文件
+        id: apk
+        run: |
+          mkdir -p "${GITHUB_WORKSPACE}/apks"
+          count=0
+          for f in app/build/outputs/apk/debug/*.apk app/build/outputs/apk/release/*.apk; do
+            if [ -f "$f" ]; then
+              cp "$f" "${GITHUB_WORKSPACE}/apks/"
+              count=$((count+1))
+            fi
+          done
+          echo "count=${count}" >> $GITHUB_OUTPUT
+          if [ "${count}" -eq 0 ]; then
+            echo "::error::未找到任何 APK 产物，请检查构建配置"
+            exit 1
+          fi
+
+      - name: 上传 APK 为构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: ad-mask-apk
+          path: apks/*.apk
+
+      # 仅当从版本标签（如 v1.1）触发时，把 release APK 发布到 GitHub Release
+      - name: 发布 GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: apks/*-release*.apk
+          generate_release_notes: true
