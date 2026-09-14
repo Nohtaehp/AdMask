@@ -35,7 +35,20 @@ jobs:
       - name: 初始化 Gradle 缓存
         uses: gradle/actions/setup-gradle@v4
 
+      # 从 Secret 还原签名 keystore（无密钥时不设置签名，回退 debug 签名）
+      - name: 还原签名密钥
+        if: ${{ secrets.KEYSTORE_BASE64 != '' }}
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > "${{ runner.temp }}/admask-release.jks"
+
       - name: 构建 APK
+        env:
+          SIGNING_STORE_FILE: ${{ runner.temp }}/admask-release.jks
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
         run: ./gradlew assembleDebug assembleRelease --no-daemon
 
       - name: 收集 APK 文件

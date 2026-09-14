@@ -25,3 +25,6 @@ Thumbs.db
 # 日志与临时文件
 *.log
 *.hprof
+
+# 签名密钥（切勿入库）
+keystore/
